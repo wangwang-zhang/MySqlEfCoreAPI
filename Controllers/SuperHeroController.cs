@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SuperHeroAPI.Services;
 
 namespace SuperHeroAPI.Controllers
 {
@@ -8,16 +9,18 @@ namespace SuperHeroAPI.Controllers
     public class SuperHeroController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly SuperHeroService _superHeroService;
 
-        public SuperHeroController(DataContext context)
+        public SuperHeroController(DataContext context, SuperHeroService superHeroService)
         {
             _context = context;
+            _superHeroService = superHeroService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> Get()
         {
-            return Ok(await _context.SuperHeroes.ToListAsync());
+            return Ok(await _superHeroService.GetSuperHeroes());
         }
 
         [HttpGet("{id}")]
