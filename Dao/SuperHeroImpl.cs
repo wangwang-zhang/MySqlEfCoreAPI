@@ -11,8 +11,12 @@ public class SuperHeroImpl : ISuperHeroDao
     {
         _context = context;
     }
-    public Task<List<SuperHero>> Get()
+    public async Task<List<SuperHero>> Get()
     {
-        return  _context.SuperHeroes.ToListAsync();
+        return  await _context.SuperHeroes.ToListAsync();
+    }
+    public async Task<SuperHero> Get(int id)
+    {
+        return await _context.SuperHeroes.FindAsync(id);
     }
 }

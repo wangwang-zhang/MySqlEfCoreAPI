@@ -15,4 +15,9 @@ public class SuperHeroService
     {
         return _superHeroDao.Get();
     }
+
+    public Task<SuperHero> GetSuperHeroesById(int id)
+    {
+        return _superHeroDao.Get(id);
+    }
 }

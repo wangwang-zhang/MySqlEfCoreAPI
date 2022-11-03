@@ -5,5 +5,5 @@ namespace SuperHeroAPI.Dao;
 public interface ISuperHeroDao
 {
     public Task<List<SuperHero>> Get();
-    
+    public Task<SuperHero> Get(int id);
 }
