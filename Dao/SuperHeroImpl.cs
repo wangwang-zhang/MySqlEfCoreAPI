@@ -19,4 +19,10 @@ public class SuperHeroImpl : ISuperHeroDao
     {
         return await _context.SuperHeroes.FindAsync(id);
     }
+    public async Task<List<SuperHero>> AddHero(SuperHero hero)
+    {
+        _context.SuperHeroes.Add(hero);
+        await _context.SaveChangesAsync();
+        return await _context.SuperHeroes.ToListAsync();
+    }
 }

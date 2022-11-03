@@ -20,4 +20,9 @@ public class SuperHeroService
     {
         return _superHeroDao.Get(id);
     }
+
+    public Task<List<SuperHero>> AddSuperHero(SuperHero superHero)
+    {
+        return _superHeroDao.AddHero(superHero);
+    }
 }

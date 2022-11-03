@@ -6,4 +6,5 @@ public interface ISuperHeroDao
 {
     public Task<List<SuperHero>> Get();
     public Task<SuperHero> Get(int id);
+    public Task<List<SuperHero>> AddHero(SuperHero hero);
 }
