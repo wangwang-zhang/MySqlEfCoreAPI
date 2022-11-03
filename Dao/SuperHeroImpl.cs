@@ -38,4 +38,14 @@ public class SuperHeroImpl : ISuperHeroDao
         
         return await _context.SuperHeroes.ToListAsync();
     }
+    public async Task<List<SuperHero>> Delete(int id)
+    {
+        var dbHero = await _context.SuperHeroes.FindAsync(id);
+        if (dbHero == null)
+            throw new Exception("No such superhero");
+        _context.SuperHeroes.Remove(dbHero);
+        await _context.SaveChangesAsync();
+        
+        return await _context.SuperHeroes.ToListAsync();
+    }
 }

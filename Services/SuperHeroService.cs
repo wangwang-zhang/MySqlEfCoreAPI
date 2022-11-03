@@ -30,4 +30,9 @@ public class SuperHeroService
     {
         return _superHeroDao.UpdateHero(superHero);
     }
+
+    public Task<List<SuperHero>> DeleteSuperHero(int id)
+    {
+        return _superHeroDao.Delete(id);
+    }
 }
