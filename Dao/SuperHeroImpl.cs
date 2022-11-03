@@ -25,4 +25,17 @@ public class SuperHeroImpl : ISuperHeroDao
         await _context.SaveChangesAsync();
         return await _context.SuperHeroes.ToListAsync();
     }
+    public async Task<List<SuperHero>> UpdateHero(SuperHero request)
+    {
+        var dbHero = await _context.SuperHeroes.FindAsync(request.Id);
+        if (dbHero == null)
+            throw new Exception("No such superhero");
+        dbHero.Name = request.Name;
+        dbHero.FirstName = request.FirstName;
+        dbHero.LastName = request.LastName;
+        dbHero.Place = request.Place;
+        await _context.SaveChangesAsync();
+        
+        return await _context.SuperHeroes.ToListAsync();
+    }
 }
